@@ -15,6 +15,7 @@
 public class Stack {
 	int size;
 	Node last;
+
 	public static void main(String[] args) {
 		Stack stack = new Stack();
 		stack.insert(new Node(0));
@@ -29,48 +30,52 @@ public class Stack {
 		stack.clear();
 		System.out.println(stack.size);
 	}
-	
-	public Stack(){
+
+	public Stack() {
 		size = 0;
 		last = null;
 	}
+
 	public void insert(Node node) {
-		if(this.isEmpty()) {
+		if (this.isEmpty()) {
 			last = node;
-		}else {
+		} else {
 			node.prev = last;
 			last.next = node;
 			last = node;
 		}
 		size++;
 	}
-	
+
 	public void top() {
 		System.out.println(this.last.value);
 	}
+
 	public void pop() {
 		System.out.println(this.last.value);
 		last = last.prev;
 		last.next = null;
 		size--;
 	}
-	
+
 	public void clear() {
 		size = 0;
 		last = null;
 	}
+
 	public boolean isEmpty() {
-		if(size == 0) {
+		if (size == 0) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
-	public static class Node{
+
+	public static class Node {
 		int value;
 		Node next;
 		Node prev;
-		
+
 		public Node(int value) {
 			this.value = value;
 			this.next = null;
