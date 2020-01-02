@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /*========================================================================================================
  * 
  * Author: Gregory Rozanski
@@ -11,6 +9,7 @@ import java.util.Scanner;
  * Does not output the LIS itself
  =========================================================================================================*/
 
+import java.util.Scanner;
 public class LongestCommonSubsequence {
 
 	public static void main(String[] args) {
