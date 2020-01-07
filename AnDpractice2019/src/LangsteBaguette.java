@@ -28,26 +28,26 @@ public class LangsteBaguette {
 
 	public static void main(String[] args) {
 		int l = 121;
-		int[] sizes = {50,26,20};
-		int[] prices = {25,14,10};
-		System.out.println(baguette(l,sizes,prices));
+		int[] sizes = { 50, 26, 20 };
+		int[] prices = { 25, 14, 10 };
+		System.out.println(baguette(l, sizes, prices));
 
 	}
-	
-	public static int baguette(int l,int[] sizes, int[] prices) {
-		int[] length = new int[l+1];
+
+	public static int baguette(int l, int[] sizes, int[] prices) {
+		int[] length = new int[l + 1];
 		length[0] = 0;
-		for(int i = 1; i<l+1;i++) {
-			for(int j = 0; j<sizes.length;j++) {
+		for (int i = 1; i < l + 1; i++) {
+			for (int j = 0; j < sizes.length; j++) {
 				int sol = 0;
 				int dist = 0;
-				if(i-sizes[j] >= 0) {
+				if (i - sizes[j] >= 0) {
 					sol = prices[j];
 					dist = sizes[j];
 				}
-				length[i] = Math.max(length[i-1], Math.max(length[i-dist] + sol,length[i]));
+				length[i] = Math.max(length[i - 1], Math.max(length[i - dist] + sol, length[i]));
 			}
 		}
-		return length[l-1];
+		return length[l - 1];
 	}
 }
