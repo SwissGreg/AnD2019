@@ -21,7 +21,7 @@
  * We use a DP table where DP[i] is the longest path ending at station i;
  * We go through each station and outgoing edges (u,v,c(x)) if DP[v] < DP[u] + c(x) then we overwrite DP[v]
  * The max value will be in DP[V-1]
- * The algorithm has a runtime of O(|V|*|E|)
+ * The algorithm has a runtime of O(|V|+|E|)
 ==============================================================================================================================*/
 import java.util.ArrayList;
 import java.util.ListIterator;
