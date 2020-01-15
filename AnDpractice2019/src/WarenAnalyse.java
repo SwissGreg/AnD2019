@@ -2,27 +2,36 @@
  * 
  * Author: Gregory Rozanski
  * 
- * EPROG Basis Fruhjahr 2018 Exercise 3
+ * EPROG Basisprüfung Fruhjahr 2018 Exercise 3
+ * WarenAnalyse
  * 
 ========================================================================================================================== */
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class WarenAnalyse {
-	
+	public static void main(String[] args) throws FileNotFoundException{
+		File input = new File("transaktionen.txt");
+		File output = new File("solutions.txt");
+		analyse(input,output);
+	}
 	static void analyse(File input, File output) throws FileNotFoundException {
-		Scanner scan = new Scanner(System.in);
+		PrintStream stream = new PrintStream(output);
+		Scanner scan = new Scanner(input);
+		scan.useLocale(Locale.US);
 		ArrayList<String> names = new ArrayList();
 		ArrayList<String> product = new ArrayList();
 		ArrayList<Integer> quantity = new ArrayList();
 		ArrayList<Double> prices = new ArrayList();
 		ArrayList<Double> profit = new ArrayList();
 		while(scan.hasNext()) {
-			String name = scan.next();
 			String pro = scan.next();
+			String name = scan.next();
 			int num = scan.nextInt();
 			double price = scan.nextDouble();
 			names.add(name);
@@ -33,7 +42,10 @@ public class WarenAnalyse {
 		}
 		System.out.println(one(product,profit,prices));
 		System.out.println(two(names,profit));
-		System.out.println(three(names,prices));
+		System.out.println(three(product,prices));
+		stream.println(one(product,profit,prices));
+		stream.println(two(names,profit));
+		stream.println(three(product,prices));
 		
 	}
 	public static String one(ArrayList<String> product, ArrayList<Double> profit,ArrayList<Double> price) {
@@ -67,15 +79,15 @@ public class WarenAnalyse {
 		return result + " " + max;
 	}
 	
-	public static String three(ArrayList<String> names, ArrayList<Double> prices) {
+	public static String three(ArrayList<String> product, ArrayList<Double> prices) {
 		int index = 0;
 		double maxDist = 0;
-		for(int i = 0; i<names.size();i++) {
-			String name = names.get(i);
-			double min = Integer.MAX_VALUE;
-			double max = Integer.MIN_VALUE;
-			for(int j = i+1; j<names.size();j++) {
-				if(names.get(j).equals(name)) {
+		for(int i = 0; i<product.size();i++) {
+			String name = product.get(i);
+			double min = prices.get(i);
+			double max = prices.get(i);
+			for(int j = i+1; j<product.size();j++) {
+				if(product.get(j).equals(name)) {
 					if(prices.get(j) < min) {
 						min = prices.get(j);
 					}
@@ -90,6 +102,6 @@ public class WarenAnalyse {
 				maxDist = max-min;
 			}
 		}
-		return names.get(index);
+		return product.get(index);
 	}
 }
