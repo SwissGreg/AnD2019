@@ -23,16 +23,19 @@ public class GoogleHashCode2020 {
 		readSolve(new Scanner (inputE), out);
 
 	}
-	
 	public static void readSolve(Scanner scan, PrintStream out) {
 		int B = scan.nextInt();
 		int L = scan.nextInt();
 		int D = scan.nextInt();
 		//L libraries
 		for(int i = 0; i<L;i++) {
-			int n = scan.nextInt();
-			int t = scan.nextInt();
-			int m = scan.nextInt();
+			int n = scan.nextInt(); // number of books in library i
+			int t = scan.nextInt(); // number of days to signup library i
+			int m = scan.nextInt(); // number of books which can be shipped from i
+			//read in the ID's of the books
+			for(int j = 0; j<n;j++) {
+				int id = scan.nextInt();
+			}
 		}
 	}
 	
